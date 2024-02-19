@@ -1,0 +1,1 @@
+A basic script that saves wikipedia's Daily featured article thumbnail 
