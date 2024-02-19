@@ -43,7 +43,7 @@ def get_image():
         image = Image.open(BytesIO(image_response.content))
         filename = f"{result[1]} {datetime.now().date()}"
         # os.chdir("../output")
-        image.save(f"{filename}.jpg")
+        image.save(f"output/{filename}.jpg")
         return 0
     else:
         print("Error ")
