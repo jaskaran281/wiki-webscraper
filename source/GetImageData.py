@@ -43,15 +43,15 @@ def get_image(url):
     #* and also retrieves the name or title for the image
     #* in form of ("src", "alt")
 
-    result = _get_source(url)
-    url = f"https:{result[0]}"
+    result_ = _get_source(url)
+    url = f"https:{result_[0]}"
     image_response = requests.get(url)
 
     if image_response.status_code == 200:
 
         #* encodes the recieved data as an Image object
         image = Image.open(BytesIO(image_response.content))
-        filename = f"{result[1]} {datetime.now().date()}"
+        filename = f"{result_[1]} {datetime.now().date()}"
         # os.chdir("../output")
 
 
