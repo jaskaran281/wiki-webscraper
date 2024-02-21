@@ -45,8 +45,12 @@ def get_image(url):
     #* in form of ("src", "alt")
 
 
+    result_ = _get_source(url)
+
+
    
     result_ = _get_source_image(url)
+
     url = f"https:{result_[0]}"
     image_response = requests.get(url)
 
