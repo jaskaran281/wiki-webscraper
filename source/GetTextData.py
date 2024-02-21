@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 WIKI_PEDIA_MAIN_PAGE = "https://en.wikipedia.org/wiki/Main_Page"
 
-def __get_source(url):
+def get_source(url):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -13,10 +13,10 @@ def __get_source(url):
         link_tag = main_page_tfa.find("b").find("a")
         href = link_tag.get("href")
         # print(href)
-        url_page = f"https://en.wikipedia.org/wiki{href}?printable=yes"
+        url_page = str(f"https://en.wikipedia.org/{href}").strip()
         
-        # print(url_page)
-        # print(link_tag.get("title"))
+        print(url_page)
+        print(link_tag.get("title"))
 
         return (url_page, link_tag.get("title"))
     else:
@@ -24,5 +24,7 @@ def __get_source(url):
         return -1
 
 
+
+
 if __name__ == "__main__":
-    __get_source(WIKI_PEDIA_MAIN_PAGE)
+    get_source(WIKI_PEDIA_MAIN_PAGE)

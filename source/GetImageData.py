@@ -12,7 +12,7 @@ from pathlib import Path
 #  get image link
 #  return link
 
-WIKI_PEDIA_MAIN_PAGE = "https://en.wikipedia.org/wiki/Main_Page"
+
 
 def _get_source(url):
 
@@ -37,13 +37,13 @@ def _get_source(url):
         print("error")
         return -1
 
-def get_image():
+def get_image(url):
 
     #* uses _get_source() to get the url to image
     #* and also retrieves the name or title for the image
     #* in form of ("src", "alt")
 
-    result = _get_source(WIKI_PEDIA_MAIN_PAGE)
+    result = _get_source(url)
     url = f"https:{result[0]}"
     image_response = requests.get(url)
 
