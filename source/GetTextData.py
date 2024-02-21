@@ -14,10 +14,10 @@ def get_source_text(url):
         link_tag = main_page_tfa.find("b").find("a")
         href = link_tag.get("href")
         # print(href)
-        url_page = f"https://en.wikipedia.org/wiki{href}?printable=yes"
+        url_page = str(f"https://en.wikipedia.org/{href}").strip()
         
-        # print(url_page)
-        # print(link_tag.get("title"))
+        print(url_page)
+        print(link_tag.get("title"))
 
         return (url_page, link_tag.get("title"))
     else:
@@ -26,5 +26,9 @@ def get_source_text(url):
     
 
 
+
+
 if __name__ == "__main__":
+
     get_source_text(WIKI_PEDIA_MAIN_PAGE)
+
