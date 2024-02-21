@@ -1,9 +1,10 @@
+
 import requests
 from bs4 import BeautifulSoup
 
 WIKI_PEDIA_MAIN_PAGE = "https://en.wikipedia.org/wiki/Main_Page"
 
-def get_source(url):
+def get_source_text(url):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -22,9 +23,12 @@ def get_source(url):
     else:
         print("error")
         return -1
+    
 
 
 
 
 if __name__ == "__main__":
-    get_source(WIKI_PEDIA_MAIN_PAGE)
+
+    get_source_text(WIKI_PEDIA_MAIN_PAGE)
+
