@@ -13,7 +13,7 @@ def get_source(url):
         link_tag = main_page_tfa.find("b").find("a")
         href = link_tag.get("href")
         # print(href)
-        url_page = str(f"https://en.wikipedia.org/{href}").strip()
+        url_page = str(f"https://en.wikipedia.org/{href}?printable=yes").strip()
         
         print(url_page)
         print(link_tag.get("title"))
