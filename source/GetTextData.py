@@ -1,0 +1,28 @@
+import requests
+from bs4 import BeautifulSoup
+
+WIKI_PEDIA_MAIN_PAGE = "https://en.wikipedia.org/wiki/Main_Page"
+
+def __get_source(url):
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        raw_html = BeautifulSoup(response.text, "html.parser")
+        main_page_tfa = raw_html.find(id="mp-tfa").find("p")
+        link_tag = main_page_tfa.find("b").find("a")
+        href = link_tag.get("href")
+        # print(href)
+        url_page = f"https://en.wikipedia.org/wiki{href}?printable=yes"
+        
+        # print(url_page)
+        # print(link_tag.get("title"))
+
+        return (url_page, link_tag.get("title"))
+    else:
+        print("error")
+        return -1
+
+
+if __name__ == "__main__":
+    __get_source(WIKI_PEDIA_MAIN_PAGE)

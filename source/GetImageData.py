@@ -38,15 +38,24 @@ def _get_source(url):
         return -1
 
 def get_image():
+
+    #* uses _get_source() to get the url to image
+    #* and also retrieves the name or title for the image
+    #* in form of ("src", "alt")
+
     result = _get_source(WIKI_PEDIA_MAIN_PAGE)
     url = f"https:{result[0]}"
     image_response = requests.get(url)
 
     if image_response.status_code == 200:
+
+        #* encodes the recieved data as an Image object
         image = Image.open(BytesIO(image_response.content))
         filename = f"{result[1]} {datetime.now().date()}"
         # os.chdir("../output")
 
+
+        # * returns the image data and a filename to save the image 
         return (image, filename)
     else:
         print("Error ")
